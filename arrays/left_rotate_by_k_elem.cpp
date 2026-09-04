@@ -26,6 +26,7 @@ void rotateLeft(vector<int>& arr,int k) {
     reverseArray(arr, 0, k - 1);
     reverseArray(arr, k, n - 1);
     reverseArray(arr, 0, n - 1);
+
 }
 
 int main() {

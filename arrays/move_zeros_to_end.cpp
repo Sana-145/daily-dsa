@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<iostream>
+#include<vector>
+using namespace std;
+
+// Brute Force Approach
+// Complexity: Time  → O(n), Space → O(n)
+// void moveZeros(vector<int>& arr) {
+//     int n = arr.size();
+    
+//     vector<int> temp;
+
+//     for (int i = 0; i < n; i++) {
+//         if (arr[i] != 0) {
+//             temp.push_back(arr[i]);
+//         }
+//     }
+
+//     for (int i = 0; i < temp.size(); i++) {
+//         arr[i] = temp[i];
+//     }
+
+//     for (int i = temp.size(); i < n; i++) {
+//         arr[i] = 0;
+//     }
+// }
+
+
+// Optimal Approach
+// Complexity: Time  → O(n), Space → O(1)
+void moveZeros(vector<int>& arr) {
+    int n = arr.size();
+    int j = -1;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == 0) {
+            j = i;
+            break;
+        }
+    }
+
+    if (j == -1) {
+        return;
+    }
+
+    for (int i = j + 1; i < n; i++) {
+        if (arr[i] != 0) {
+            swap(arr[i], arr[j]);
+            j++;
+        }
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> arr(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    moveZeros(arr);
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
